@@ -91,10 +91,10 @@
     // Return a different operator based on the argument.
     var direction = {
       'max-width': function(a,b) {
-        return a >= b;
+        return a <= b;
       },
       'min-width': function(a,b) {
-         return a <= b;
+         return a >= b;
       }
     }
 
