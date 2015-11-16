@@ -40,6 +40,24 @@ An array of items that should be moved. Each item must be an object.
 
 A default breakpoint that will apply to all items that do not have one specified.
 
+## Events
+
+### Usage 
+
+```javascript
+$('#page').on('itemsMovedThere', function() {
+  // do something when items move to destination...
+});
+```
+
+### Available Events
+
+- `itemMoved` - Triggered when any item is moved, there or back.
+- `itemMovedThere` - triggered when any item is moved to destination.
+- `itemMovedBack` - Triggered when any item is moved back to original position.
+- `itemsMovedThere` - Triggerd when all items have moved to destination.
+- `itemsMovedBack` - Triggered when all items have moved back to original position.
+
 
 
 

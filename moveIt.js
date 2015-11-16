@@ -1,9 +1,11 @@
 !function($){
   "use strict";
-  
+
   $.fn.moveIt = function(moveItems, bpDefault) {
     var $win = $(window),
-        base = this;
+      base = this,
+      itemsMovedThere = 0,
+      itemsMovedBack = 0;
 
     function MoveItem(moveItem) {
       this.isMoved = false;
@@ -12,11 +14,10 @@
       this.bpDirection = moveItem.bpDirection || 'min-width';
 
       var itemBase = this,
-          $target = $(base).find(moveItem.moveTo),
-          $el = base.find(moveItem.el),
-          $elParent = $el.parent(),
-          elIndex = $el.index(),
-          $clone = $el.clone();
+        $target = $(base).find(moveItem.moveTo),
+        $el = base.find(moveItem.el),
+        $elParent = $el.parent(),
+        elIndex = $el.index(),
 
       /**
        * Move the item to the location specified in options.
@@ -40,6 +41,13 @@
             break;
         }
 
+        base.trigger('itemMovedThere');
+        base.trigger('itemMoved');
+
+        if (++itemsMovedThere == moveItems.length) {
+          base.trigger('itemsMovedThere');
+          itemsMovedThere = 0;
+        }
         this.isMoved = true;
       };
 
@@ -48,11 +56,19 @@
        */
       this.moveBack = function() {
         if (elIndex == 0) {
-           $elParent.prepend($el);
+          $elParent.prepend($el);
         } else if (elIndex >= $elParent.children().length) {
-          $elParent.append($el);  
+          $elParent.append($el);
         } else if (elIndex > 0) {
           $elParent.children().eq(elIndex).before($el);
+        }
+
+        base.trigger('itemMoved');
+        base.trigger('itemMovedBack');
+
+        if (++itemsMovedBack == moveItems.length) {
+          base.trigger('itemsMovedBack');
+          itemsMovedBack = 0;
         }
 
         this.isMoved = false;
@@ -82,6 +98,7 @@
 
     function init() {
       var items = [];
+
       $.each(moveItems, function(i, moveItem) {
         var currentItem = new MoveItem(moveItem);
         items.push(currentItem);
@@ -94,11 +111,10 @@
         return a <= b;
       },
       'min-width': function(a,b) {
-         return a >= b;
+        return a >= b;
       }
-    }
+    };
 
     init();
   };
 }(jQuery);
-
