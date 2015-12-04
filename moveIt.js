@@ -17,7 +17,7 @@
         $target = $(base).find(moveItem.moveTo),
         $el = base.find(moveItem.el),
         $elParent = $el.parent(),
-        elIndex = $el.index(),
+        elIndex = $el.index();
 
       /**
        * Move the item to the location specified in options.
