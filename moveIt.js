@@ -12,17 +12,27 @@
       this.breakpoint = moveItem.breakpoint || bpDefault;
       this.position =  moveItem.position || 'after';
       this.bpDirection = moveItem.bpDirection || 'min-width';
+      this.stripScript = moveItem.removeInlineScripts || false;
 
       var itemBase = this,
+        $scripts,
         $target = $(base).find(moveItem.moveTo),
         $el = base.find(moveItem.el),
         $elParent = $el.parent(),
         elIndex = $el.index();
 
+      if (this.stripScript) {
+        $scripts = $el.find('script');
+      }
+
       /**
        * Move the item to the location specified in options.
        */
       this.moveThere = function() {
+        if ($scripts.length > 0) {
+          $scripts.remove();
+        }
+
         switch (this.position) {
           case 'before':
             $target.before($el);
