@@ -29,13 +29,13 @@ $('#page').moveIt([
 
 An array of items that should be moved. Each item must be an object. 
 
-`el` - Element that should be moved. Should be a string in the format of a css selector.
-`moveTo` - Element to move `el` to. Should be a string in the format of a css selector.
-`bpDirection` - CSS media query direction to match.
+- `el` - Element that should be moved. Should be a string in the format of a css selector.
+- `moveTo` - Element to move `el` to. Should be a string in the format of a css selector.
+- `bpDirection` - CSS media query direction to match.
  - `max-width` - Element moves when the window is smaller than the breakpoint.
  - `min-width` - Element moves when the window is larger than the breakpoint.
-`breakpoint` - A breakpoint that will override the default.
-`removeInlineScripts` - Remove any script tags within the element you are moving. This can prevent inline functions from being called every time the element is moved.
+- `breakpoint` - A breakpoint that will override the default.
+- `removeInlineScripts` - Remove any script tags within the element you are moving. This can prevent inline functions from being called every time the element is moved.
 
 ### Default Breakpoint
 
