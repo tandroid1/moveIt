@@ -15,7 +15,7 @@
       this.stripScript = moveItem.removeInlineScripts || false;
 
       var itemBase = this,
-        $scripts,
+        $scripts = '',
         $target = $(base).find(moveItem.moveTo),
         $el = base.find(moveItem.el),
         $elParent = $el.parent(),
