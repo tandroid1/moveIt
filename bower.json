@@ -1,0 +1,18 @@
+{
+  "name": "moveIt",
+  "main": "moveIt.js",
+  "homepage": "https://github.com/tandroid1/moveIt",
+  "authors": [
+    "Tanner Langley <tlangley141@gmail.com>"
+  ],
+  "description": "Move elements at breakpoints.",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
